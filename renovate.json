@@ -9,11 +9,14 @@
     "enabled": true,
     "fileMatch": ["(^|/)dune-project$", "\\.opam$"]
   },
-  "packageRules": [
+  "customManagers": [
     {
-      "matchPackagePatterns": ["ocaml", "dune"],
-      "groupName": "ocaml core tools",
-      "automerge": true
+      "customType": "regex",
+      "fileMatch": ["dune-project", "^.*\\.opam$"],
+      "matchStrings": [
+        "\"(?<depName>[\\w-]+)\"\\s+\\{[>= ]+\"(?<currentValue>[\\w\\.]+)\"\\}"
+      ],
+      "datasourceTemplate": "opam"
     }
   ]
 }
