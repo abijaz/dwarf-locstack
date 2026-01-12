@@ -1,0 +1,19 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:base",
+    ":dependencyDashboard"
+  ],
+  "enabledManagers": ["opam", "github-actions"],
+  "opam": {
+    "enabled": true,
+    "fileMatch": ["(^|/)dune-project$", "\\.opam$"]
+  },
+  "packageRules": [
+    {
+      "matchPackagePatterns": ["ocaml", "dune"],
+      "groupName": "ocaml core tools",
+      "automerge": true
+    }
+  ]
+}
